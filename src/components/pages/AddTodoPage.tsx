@@ -1,8 +1,10 @@
 import { FormEvent, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddTodoPage() {
     const url = "https://retoolapi.dev/CVz2rC/todo";
     const todoRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
 
     async function addNewTodo(event:FormEvent) {
         event.preventDefault();
@@ -16,7 +18,8 @@ function AddTodoPage() {
             }
         });
         if (response.ok) {
-            // TODO: sikeres felvétel
+            todoRef.current!.value = "";
+            navigate("/");
         }
     }
 
