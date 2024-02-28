@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createHashRouter } from 'react-router-dom'
 import ListTodosPage from './components/pages/ListTodosPage.tsx'
 import AddTodoPage from './components/pages/AddTodoPage.tsx'
 
-const router = createBrowserRouter([{
+const router = createHashRouter([{
   path: "/",
   element: <App />,
   children: [
