@@ -1,28 +1,17 @@
+import { Link, Outlet } from 'react-router-dom'
 import './App.css'
-import { Todo } from './Todo';
-import TodoList from './components/TodoList';
-import { useEffect, useState } from 'react';
 
 function App() {
-  const url = "https://retoolapi.dev/CVz2rC/todo";
-  const [todos, setTodos] = useState<Todo[]>([]);
-  
-  const readTodos = async () => {
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json() as Todo[];
-      setTodos(data);
-    }
-  };
-
-  useEffect(() => {
-    readTodos();
-  }, []);
-
   return (
     <>
+    <nav>
+      <ul>
+        <li><Link to="/">Teendők</Link></li>
+        <li><Link to="/add">Új teendő felvétele</Link></li>
+      </ul>
+    </nav>
     <main>
-      <TodoList todos={todos} />
+      <Outlet />
     </main>
     </>
   )
